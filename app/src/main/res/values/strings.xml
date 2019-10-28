@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ChatClient</string>
+
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="mensagemhint">Type your message here</string>
+
+    <string name="ola">Olá amigo, há quanto tempo em !?</string>
+    <string name="como_vc_ta">Tô bem, e vc?</string>
+    <string name="que_bom">Bom saber.</string>
+    <string name="adeus">Tchau!</string>
+
+</resources>
