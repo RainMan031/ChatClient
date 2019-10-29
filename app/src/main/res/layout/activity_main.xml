@@ -22,21 +22,26 @@
 
         <EditText
             android:id="@+id/editMensagem"
+            style="@style/Widget.AppCompat.EditText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="start"
             android:hint="@string/mensagemhint"
-            android:inputType="textLongMessage" />
+            android:inputType="textLongMessage"
+            android:shadowColor="#0086E4"
+            android:textColorHighlight="#3F51B5"
+            android:textColorLink="#3F41B5"
+            android:textCursorDrawable="@color/design_default_color_primary_dark"
+            app:backgroundTint="@color/azulzinhop1k4" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnEnviar"
-            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="Enviar" />
+            android:src="@drawable/ic_send_black_36dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -47,16 +52,18 @@
         android:layout_alignParentEnd="true"
         android:background="@null"
         android:orientation="vertical"
-        android:padding="5pt">
+        android:padding="5pt"
+        android:layout_alignParentRight="true">
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listMensagens"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@null"
             android:divider="@null"
             android:stackFromBottom="true"
             android:transcriptMode="alwaysScroll" />
     </LinearLayout>
+
 
 </RelativeLayout>

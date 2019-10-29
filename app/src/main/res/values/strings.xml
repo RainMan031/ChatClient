@@ -4,11 +4,19 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="mensagemhint">Type your message here</string>
+    <string name="mensagemhint">Digite sua mensagem aqui</string>
+    <string name="friend">Friend Name</string>
 
     <string name="ola">Olá amigo, há quanto tempo em !?</string>
     <string name="como_vc_ta">Tô bem, e vc?</string>
     <string name="que_bom">Bom saber.</string>
     <string name="adeus">Tchau!</string>
+
+    <string-array name="friends">
+        <item>John</item>
+        <item>Paul</item>
+        <item>George</item>
+        <item>Ringo</item>
+    </string-array>
 
 </resources>
