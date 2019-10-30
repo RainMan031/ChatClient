@@ -1,11 +1,13 @@
 package com.example.chatclient;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.KeyEventDispatcher;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<Mensagem> arrayListDeMsg;
     RecyclerView.Adapter meuArrayAdapter;
     ArrayList<String> respostas;
+    Toolbar toolbar;
 
 
 
@@ -64,10 +67,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         llm.setOrientation(RecyclerView.VERTICAL);
         listMensagens.setLayoutManager(llm);
 
+        Intent in = getIntent();
+
 
         btnEnviar.setOnClickListener(this);
         btnEnviar.setFocusable(true);
         editMensagem.setOnKeyListener(this);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        String titulo = in.getStringExtra("Friend Name");
+        toolbar.setTitle(titulo);
+        setSupportActionBar(toolbar);
+
+
 
 
         respostas = new ArrayList<String>();
