@@ -2,25 +2,72 @@ package com.example.chatclient;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Contatos extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     Toolbar toolbar;
-    String[] names;
+    String[] nomes;
 
     ListView friendView;
+
+    ArrayAdapterContato ArrayAdapterContato;
+
+    public class FriendInfo {
+        int id;
+        String nome;
+        String status;
+
+
+        public String getNome(){
+            return this.nome;
+        }
+
+    }
+
+    List<FriendInfo> friendInfoList = null;
+
+    String friendJsonString = "[" +
+            "{" +
+            "\"id\": 1," +
+            "\"nome\": \"John\"," +
+            "\"status\": \"Imagine all the people ...\"" +
+            "}," +
+            "{" +
+            "\"id\": 2," +
+            "\"nome\": \"Paul\"," +
+            "\"status\": \"Let it be ...\"" +
+            "}," +
+            "{" +
+            "\"id\": 3," +
+            "\"nome\": \"George\"," +
+            "\"status\": \"Wait mister postman ...\"" +
+            "}," +
+            "{" +
+            "\"id\": 4," +
+            "\"nome\": \"Ringo\"," +
+            "\"status\": \"Yellow submarine ...\"" +
+            "}" +
+            "]";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +75,17 @@ public class Contatos extends AppCompatActivity implements AdapterView.OnItemCli
         setContentView(R.layout.activity_contacts);
 
 
-        names = getResources().getStringArray(R.array.friends);
+        processFriendInfo(friendJsonString);
 
-        // If you are using a ListView widget, then your activity should implement
-        // the onItemClickListener. Then you should set the OnItemClickListener for
-        // teh ListView.
+        ArrayAdapterContato = new ArrayAdapterContato(this, friendInfoList);
+
+
         friendView = (ListView) findViewById(R.id.friendListView);
-        friendView.setAdapter(new ArrayAdapter<String>(this, R.layout.friend_item, names));
+
+        friendView.setAdapter(ArrayAdapterContato);
         friendView.setOnItemClickListener(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +96,24 @@ public class Contatos extends AppCompatActivity implements AdapterView.OnItemCli
             }
         });
     }
+
+    private void processFriendInfo(String friendJsonString) {
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.create();
+
+        friendInfoList = new ArrayList<FriendInfo>();
+        friendInfoList = Arrays.asList(gson.fromJson(friendJsonString, FriendInfo[].class));
+
+        for(int i=0;i<friendInfoList.size();i++){
+
+                String num = String.valueOf(friendInfoList.size());
+                Log.i("ContatosfriendInfoList", friendInfoList.get(i).getNome());
+
+        }
+
+    }
+
     //infla o menu ao clicar nele
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -74,7 +139,8 @@ public class Contatos extends AppCompatActivity implements AdapterView.OnItemCli
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
         Intent mIntent = new Intent(this,MainActivity.class);
-        mIntent.putExtra(getString(R.string.friend), names[position]);
+        TextView friendName = (TextView) view.findViewById(R.id.friendName);
+        mIntent.putExtra(getString(R.string.friend), friendName.getText().toString());
         startActivity(mIntent);
 
     }

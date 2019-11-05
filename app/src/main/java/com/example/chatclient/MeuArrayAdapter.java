@@ -68,7 +68,12 @@ public class MeuArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         switch (viewType) {
             // create a new view
+            /*Instantiates a layout XML file into its corresponding View objects. It is never used directly. Instead, use Activity.getLayoutInflater()
+             or Context#getSystemService to retrieve a standard LayoutInflater instance that is already hooked up to the current context and correctly
+              configured for the device you are running on.
 
+            To create a new LayoutInflater with an additional Factory for your own views, you can use cloneInContext(Context) to clone an
+            existing ViewFactory, and then call setFactory(LayoutInflater.Factory) on it to include your Factory. */
             case VIEW_HOLDER_TYPE_1:
                 v = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.mensagem, parent, false);

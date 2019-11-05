@@ -13,10 +13,10 @@
     <string name="adeus">Tchau!</string>
 
     <string-array name="friends">
-        <item>John</item>
-        <item>Paul</item>
-        <item>George</item>
-        <item>Ringo</item>
+        <item>Jean Ernani</item>
+        <item>Wellintim</item>
+        <item>Cotinho</item>
+        <item>Imperador do Mal</item>
     </string-array>
 
 </resources>

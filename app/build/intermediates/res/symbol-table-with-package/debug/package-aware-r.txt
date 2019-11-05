@@ -1133,6 +1133,7 @@ id all
 id always
 id async
 id auto
+id avatar
 id barrier
 id beginning
 id blocking
@@ -1182,6 +1183,7 @@ id filled
 id fixed
 id forever
 id friendListView
+id friendName
 id ghost_view
 id gone
 id group_divider
@@ -1276,6 +1278,7 @@ id src_in
 id src_over
 id standard
 id start
+id statusMsg
 id stretch
 id submenuarrow
 id submit_area
