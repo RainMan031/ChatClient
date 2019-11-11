@@ -1,11 +1,15 @@
 package com.example.chatclient;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -21,7 +25,9 @@ public class ArrayAdapterContato extends ArrayAdapter<Contatos.FriendInfo> {
     }
 
     @Override
+    //método chamado pelo setAdapter();
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.i("oiGetView","fodas");
 
         View friendInfoView;
 
@@ -34,6 +40,9 @@ public class ArrayAdapterContato extends ArrayAdapter<Contatos.FriendInfo> {
         friendName.setText(friendInfoArrayList.get(position).nome);
         TextView statusMsg = (TextView) friendInfoView.findViewById(R.id.statusMsg);
         statusMsg.setText(friendInfoArrayList.get(position).status);
+
+        ImageView imageView = (ImageView) friendInfoView.findViewById(R.id.avatar);
+        Picasso.with(context).load("file:///android_asset/"+friendInfoArrayList.get(position).imageURL).into(imageView);
 
         return friendInfoView;
     }

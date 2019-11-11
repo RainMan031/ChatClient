@@ -1,4 +1,4 @@
-#Mon Nov 04 21:33:20 BRST 2019
+#Sun Nov 10 11:55:49 BRST 2019
 base.0=/home/rainmandebs10/Documentos/ChatClient/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
